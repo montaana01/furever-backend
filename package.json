@@ -1,0 +1,28 @@
+{
+  "name": "furever-backend",
+  "version": "0.0.1",
+  "description": "Backend of FurEver application",
+  "keywords": [
+    "Nest",
+    "Backend",
+    "HTTP",
+    "Rest",
+    "API",
+    "REST"
+  ],
+  "homepage": "https://github.com/montaana01/furever-backend#readme",
+  "bugs": {
+    "url": "https://github.com/montaana01/furever-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montaana01/furever-backend.git"
+  },
+  "license": "ISC",
+  "author": "Breaking Code",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run"
+  }
+}
