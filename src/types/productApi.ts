@@ -14,14 +14,16 @@ export type Response<T> = {
 export type Product = {
   id: string;
   version: number;
+  key: string;
   name: LocalizedString;
   description: LocalizedString;
   slug: LocalizedString;
   metaTitle: LocalizedString;
-  masterVariant: MasterVariant;
-  hasStagedChanges: boolean;
   published: boolean;
-  key: string;
+  hasStagedChanges: boolean;
+  //Todo: remove this from type!
+  categories: { typeId: string; id: string }[];
+  masterVariant: MasterVariant;
 };
 
 export type MasterVariant = {
@@ -62,7 +64,7 @@ export type PriceValue = {
 };
 
 export type AttributeForProduct = {
-  name: AttributeName;
+  name: AttributeName | string;
   value: AttributeValue;
 };
 

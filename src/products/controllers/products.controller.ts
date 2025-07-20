@@ -1,13 +1,13 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ProductsService } from './products.service';
-import { Product } from '../types/productApi';
+import { ProductsService } from '../products.service';
+import { Product, Response } from '../../types/productApi';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  getProducts() {
+  getProducts(): Response<Product> {
     return this.productsService.getProducts();
   }
 
@@ -16,13 +16,18 @@ export class ProductsController {
     return this.productsService.getProductById(id);
   }
 
-  @Get('categories')
+  @Get('key/:key')
+  getByKey(@Param('key') key: string): Product {
+    return this.productsService.getProductByKey(key);
+  }
+
+  @Get('/categories')
   getCategories() {
     return this.productsService.getCategories();
   }
 
-  @Get('types')
-  getTypes() {
-    return this.productsService.getTypes();
+  @Get('/product-types')
+  getProductTypes() {
+    return this.productsService.getProductTypes();
   }
 }
