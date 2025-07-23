@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ProductsController } from './products/controllers/products.controller';
+import { ProductsModule } from './products/products.module';
 import { getTypeOrmConfig } from './config/typeorm.config';
 
 @Module({
   imports: [
+    ProductsModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -16,7 +19,7 @@ import { getTypeOrmConfig } from './config/typeorm.config';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, ProductsController],
   providers: [AppService],
 })
 export class AppModule {}
