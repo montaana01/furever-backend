@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Param } from '@nestjs/common';
 import { ProductsService } from '../products.service';
-import { FilterProductsDto } from '../filter-products.dto';
+import { FilterProductsDto } from '../dto/filter-products.dto';
 import { Response, Product } from '../../types/productApi';
 
 @Controller('product-projections')
