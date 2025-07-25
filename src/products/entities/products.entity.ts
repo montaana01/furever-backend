@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Category, LocalizedString, MasterVariant } from '../../types/productApi';
 
-@Entity()
+@Entity('products')
 export class Products {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -34,12 +34,12 @@ export class Products {
   @Column('boolean', { default: true })
   published: boolean;
 
-  // Todo: create categories table to have manyToMany join to other table
-  @Column()
+  // Todo: to connect categories in this column need create categories table to have manyToMany join to other table
+  @Column('json')
   categories: Category[];
 
-  // Todo: create masterVariant table to have oneToMany join to other table
-  @Column()
+  // Todo: need create masterVariant table as category table to have oneToMany join to other table
+  @Column('json')
   masterVariant: MasterVariant[];
 
   @CreateDateColumn()
