@@ -41,10 +41,8 @@ export class ProductsService {
     };
   }
 
-  getProductById(id: string): Product {
-    const product: Product | undefined = this.products.find(
-      (product: Product) => product.id === id,
-    );
+  async getProductById(id: string): Promise<Products> {
+    const product = await this.productsRepository.findOne({ where: { id } });
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`);
     }
