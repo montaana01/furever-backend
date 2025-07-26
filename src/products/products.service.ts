@@ -49,11 +49,11 @@ export class ProductsService {
     return product;
   }
 
-  getProductByKey(key: string): Product {
-    const product: Product | undefined = this.products.find(
-      (product: Product) => product.key === key,
-    );
-    if (!product) throw new NotFoundException(`Product with key ${key} not found`);
+  async getProductByKey(key: string): Promise<Products> {
+    const product = await this.productsRepository.findOne({ where: { key } });
+    if (!product) {
+      throw new NotFoundException(`Product with id ${key} not found`);
+    }
     return product;
   }
 

@@ -1,7 +1,8 @@
 import { Controller, Get, Query, Param } from '@nestjs/common';
 import { ProductsService } from '../products.service';
 import { FilterProductsDto } from '../dto/filter-products.dto';
-import { Response, Product } from '../../types/productApi';
+import { Response } from '../../types/productApi';
+import { Products } from '../entities/products.entity';
 
 @Controller('product-projections')
 export class ProductProjectionsController {
@@ -13,7 +14,7 @@ export class ProductProjectionsController {
   }
 
   @Get('key=:key')
-  getByKey(@Param('key') key: string): Product {
+  getByKey(@Param('key') key: string): Promise<Products> {
     return this.productsService.getProductByKey(key);
   }
 }
