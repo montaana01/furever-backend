@@ -3,10 +3,12 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // Todo: resolve this on deploy
   app.enableCors({
-    origin: 'http://localhost:8080',
+    origin: [process.env.FRONTEND_URL ?? 'http://localhost:8080'],
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.FRONTEND_PORT ?? 3000);
 }
 bootstrap();
