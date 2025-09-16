@@ -130,5 +130,6 @@ dist
 .pnp.*
 
 #User ignores
+.idea
 .idea/
 .DS_Store
